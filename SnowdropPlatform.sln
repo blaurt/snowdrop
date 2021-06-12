@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowdrop.Data", "Snowdrop.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowdrop.DAL", "Snowdrop.DAL\Snowdrop.DAL.csproj", "{CF061043-DA47-4CAF-BA07-56FDA63EA9E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowdrop.Db", "Snowdrop.Db\Snowdrop.Db.csproj", "{C15520BF-6F8F-4CFD-BEE0-E5389CECBEC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{CF061043-DA47-4CAF-BA07-56FDA63EA9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF061043-DA47-4CAF-BA07-56FDA63EA9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF061043-DA47-4CAF-BA07-56FDA63EA9E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15520BF-6F8F-4CFD-BEE0-E5389CECBEC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15520BF-6F8F-4CFD-BEE0-E5389CECBEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15520BF-6F8F-4CFD-BEE0-E5389CECBEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15520BF-6F8F-4CFD-BEE0-E5389CECBEC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

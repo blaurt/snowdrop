@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Snowdrop.Data;
 using Snowdrop.Data.Entities;
 
@@ -10,10 +11,15 @@ namespace Snowdrop.DAL.Context
         public DbSet<Project> Projects { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
+
         public SnowdropContext(DbContextOptions options) : base(options)
         {
+            Database.EnsureCreated();
         }
-        
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(SnowdropContext))!);
+        }
     }
 }

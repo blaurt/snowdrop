@@ -12,7 +12,10 @@ namespace Snowdrop.DAL.Configurations.core
         
         public void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(Key);
+            ConfigureEntity(builder);
         }
+
+        protected abstract void ConfigureEntity(EntityTypeBuilder<TEntity> builder);
     }
 }
