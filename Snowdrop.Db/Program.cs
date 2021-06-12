@@ -32,8 +32,7 @@ namespace Snowdrop.Db
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((_, serviceCollection) =>
                 {
-                    Console.WriteLine("asdfsdf---"+_.Configuration.GetConnectionString("SnowdropContext"));
-                    serviceCollection.AddSnowdropContext(_.Configuration.GetConnectionString("SnowdropContext"));
+                    serviceCollection.AddSnowdropContext("Host=localhost;Port=5433;Database=SnowdropPlatform;Username=admin;Password=pass");
                 });
     }
 }

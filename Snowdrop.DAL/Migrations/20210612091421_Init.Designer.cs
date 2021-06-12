@@ -10,7 +10,7 @@ using Snowdrop.DAL.Context;
 namespace Snowdrop.DAL.Migrations
 {
     [DbContext(typeof(SnowdropContext))]
-    [Migration("20210612055218_Init")]
+    [Migration("20210612091421_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
