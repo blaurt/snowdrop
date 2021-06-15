@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Snowdrop.DAL\Snowdrop.DAL.csproj" />
+      <ProjectReference Include="..\Snowdrop.Data\Snowdrop.Data.csproj" />
+      <ProjectReference Include="..\Snowdrop.Infrastructure\Snowdrop.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
