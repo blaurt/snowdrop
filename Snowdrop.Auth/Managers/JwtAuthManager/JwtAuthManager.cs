@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -31,7 +32,7 @@ namespace Snowdrop.Auth.Managers.JwtAuthManager
             _tokenStorage.InvalidateToken(userName);
         }
 
-        public async Task<JwtAuthResult> GenerateToken(string userName, Claim[] claims)
+        public async Task<JwtAuthResult> GenerateToken(string userName, IEnumerable<Claim> claims)
         {
             var now = DateTime.UtcNow;
             var shouldAddAudienceClaim =

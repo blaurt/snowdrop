@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Snowdrop.Auth.Managers.JwtAuthManager;
 using Snowdrop.Auth.Managers.TokenStorage;
 using Snowdrop.Auth.Models.Configuration;
 using StackExchange.Redis.Extensions.Core.Configuration;
@@ -44,18 +45,28 @@ namespace Snowdrop.Auth.Extensions
                         ClockSkew = TimeSpan.FromSeconds(30)
                     };
                 });
+
+            collection.AddScoped<IJwtAuthManager, JwtAuthManager>();
         }
 
-        public static void AddMemorySessionManager(this IServiceCollection collection, IConfiguration configuration)
+        public static void AddMemorySessionManager(this IServiceCollection services)
         {
-            if (collection.Any(s => s.ServiceType == typeof(ITokenStorage)))
+            if (services.Any(s => s.ServiceType == typeof(ITokenStorage)))
             {
                 throw new ArgumentException($"Service for {nameof(ITokenStorage)} has already been added");
             }
-
-            collection.AddSingleton(typeof(ITokenStorage), typeof(RedisTokenStorage));
-            var redisConfiguration = configuration.GetSection("Redis").Get<RedisConfiguration>();
-            collection.AddStackExchangeRedisExtensions<NewtonsoftSerializer>(redisConfiguration);
+            services.AddSingleton(typeof(ITokenStorage), typeof(MemoryTokenStorage));
+        }
+        
+        public static void AddRedisSessionManager(this IServiceCollection services, IConfiguration configuration)
+        {
+            if (services.Any(s => s.ServiceType == typeof(ITokenStorage)))
+            {
+                throw new ArgumentException($"Service for {nameof(ITokenStorage)} has already been added");
+            }
+            services.AddSingleton(typeof(ITokenStorage), typeof(RedisTokenStorage));
+            RedisConfiguration redisConfiguration = configuration.GetSection("Redis").Get<RedisConfiguration>();
+            services.AddStackExchangeRedisExtensions<NewtonsoftSerializer>(redisConfiguration);
         }
     }
 }
